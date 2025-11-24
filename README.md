@@ -5,13 +5,14 @@
 https://github.com/jeongeun980906/CLARA-Dataset
 
 ### Our Multi-modal Augmented Dataset
+- Download link : https://drive.google.com/drive/folders/1XioyO84FeNjjxU0OxpnIfa3-EZhTBwSD?usp=sharing
+
+- Dataset Distribution.
+![Dataset Distribution.](vis/benchmark_distribution.png)
 
 
-
-
-
-
-
+- Dataset Example.
+![Dataset Example.](vis/benchmark_example.png)
 
 
 ### Citation
