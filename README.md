@@ -1,5 +1,5 @@
 # CLARA-SaGC-MM
-[2025 Robotics Under-review] "Read Between the Lines: Multi-modal Inverse Reasoning for Evaluating Consistency and Reliability in Robot Task Planning" dataset
+[Under-review] "Read Between the Lines: Multimodal Inverse Planning for Evaluating Consistency and Reliability in Robot Task Planning" dataset
 
 ### Original Dataset
 https://github.com/jeongeun980906/CLARA-Dataset
