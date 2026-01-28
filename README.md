@@ -14,7 +14,6 @@ https://github.com/jeongeun980906/CLARA-Dataset
 - Dataset Example.
 ![Dataset Example.](vis/benchmark_example.png)
 
-
 ### Citation
 ```
 @article{park2023clara,
@@ -28,3 +27,6 @@ https://github.com/jeongeun980906/CLARA-Dataset
   publisher={IEEE}
 }
 ```
+
+
+This dataset is derived from the CLARA dataset (ICRA 2024) for academic research purposes.
