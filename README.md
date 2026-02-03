@@ -77,4 +77,4 @@ The following files are generated under src/MLIP/mlip/data/:
 }
 ```
 
-This dataset is derived from the CLARA dataset (ICRA 2024) for academic research purposes.
+This project builds upon the CLARA dataset for academic research purposes.
