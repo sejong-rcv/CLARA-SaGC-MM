@@ -27,7 +27,7 @@ required by `qwen_image.py` must also be provided (see comments in the script).
 
 ---
 
-### (Optional) Generate synthesized scene images
+### Generate synthesized scene images
 
 To generate scene images from text prompts and update the image mapping JSON, run:
 
