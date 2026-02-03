@@ -4,24 +4,64 @@
 ### Original Dataset
 https://github.com/jeongeun980906/CLARA-Dataset
 
----
-This repository does not contain or redistribute any dataset files.
+## Data Usage Notice
 
-The experiments in this project are based on the CLARA dataset, which is publicly available from its official repository. Users must obtain the dataset directly from the original source.
+This repository does **not** contain or redistribute any dataset files.
 
-This repository only provides code and scripts for preprocessing, reformatting, and reproducing the experimental setup described in the paper. No original or derived dataset files are included.
-
-By using this repository, users acknowledge that they are responsible for complying with the terms and conditions under which the original CLARA dataset is provided.
+It only provides code and scripts to reproduce the postprocessing pipeline used in the paper.  
+Users must obtain all required input files directly from the original source and are responsible for complying with the applicable usage terms.
 
 ---
 
+## Reproducibility (Postprocessing Pipeline)
 
-- Dataset Distribution.
-![Dataset Distribution.](vis/benchmark_distribution.png)
+### Required inputs (to be obtained by the user)
+
+Place the following files in:
+src/MLIP/mlip/data/
+- `agument.json`  
+- `scene_groups_with_goal_label_with_img.json`
+
+If you intend to regenerate synthesized scene images, additional scene/goal metadata
+required by `qwen_image.py` must also be provided (see comments in the script).
+
+---
+
+### (Optional) Generate synthesized scene images
+
+To generate scene images from text prompts and update the image mapping JSON, run:
+
+```bash
+python src/MLIP/mlip/data/qwen_image.py
+```
+
+Generated images should be saved under a user-specified directory (e.g., qwen2image_v*/).
+This step can be skipped if the image mapping JSON and images are already available.
 
 
-- Dataset Example.
-![Dataset Example.](vis/benchmark_example.png)
+### Run postprocessing
+
+Run the following script to reproduce the postprocessing used in the paper:
+```bash
+python src/MLIP/mlip/data/postprocessing_agument.py
+```
+
+This script performs the following operations:
+injects group_id and img_path into entries,
+removes duplicate entries per (group_id, goal),
+creates calibration and validation splits,
+and generates subset JSON files used for evaluation.
+
+
+### Outputs
+
+The following files are generated under src/MLIP/mlip/data/:
+- agument_with_img_unique.json
+- agument_with_img_unique_cal.json
+- agument_with_img_unique_val.json
+- agument_with_img_unique_subset_180.json
+- agument_with_img_unique_subset_180_cal.json
+- agument_with_img_unique_subset_180_val.json
 
 ### Citation
 ```
