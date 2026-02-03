@@ -4,8 +4,17 @@
 ### Original Dataset
 https://github.com/jeongeun980906/CLARA-Dataset
 
-### Our Multi-modal Augmented Dataset
-- Download link : https://drive.google.com/drive/folders/1XioyO84FeNjjxU0OxpnIfa3-EZhTBwSD?usp=sharing
+---
+This repository does not contain or redistribute any dataset files.
+
+The experiments in this project are based on the CLARA dataset, which is publicly available from its official repository. Users must obtain the dataset directly from the original source.
+
+This repository only provides code and scripts for preprocessing, reformatting, and reproducing the experimental setup described in the paper. No original or derived dataset files are included.
+
+By using this repository, users acknowledge that they are responsible for complying with the terms and conditions under which the original CLARA dataset is provided.
+
+---
+
 
 - Dataset Distribution.
 ![Dataset Distribution.](vis/benchmark_distribution.png)
@@ -27,6 +36,5 @@ https://github.com/jeongeun980906/CLARA-Dataset
   publisher={IEEE}
 }
 ```
-
 
 This dataset is derived from the CLARA dataset (ICRA 2024) for academic research purposes.
