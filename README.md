@@ -12,56 +12,43 @@ It only provides code and scripts to reproduce the postprocessing pipeline used 
 Users must obtain all required input files directly from the original source and are responsible for complying with the applicable usage terms.
 
 ---
+# Generation Pipeline
 
-## Reproducibility (Postprocessing Pipeline)
+Generate augmented datasets with image metadata from `agument.json` (obtain from the official CLARA source).
 
-### Required inputs (to be obtained by the user)
+## Minimum Required Files
 
-Place the following files in:
-src/MLIP/mlip/data/
-- `agument.json`  
-- `scene_groups_with_goal_label_with_img.json`
+| File | Role |
+|------|------|
+| `agument.json` | Original dataset (obtain from CLARA) |
+| `scene_groups_with_goal_label.py` | Builds scene groups from `agument.json` |
+| `json_parsing.py` | Helper for `qwen_image.py` to load scene groups |
+| `qwen_image.py` | Generates scene images via Qwen text-to-image |
+| `postprocessing_agument.py` | Produces the 6 final JSON outputs |
 
-If you intend to regenerate synthesized scene images, additional scene/goal metadata
-required by `qwen_image.py` must also be provided (see comments in the script).
-
----
-
-### Generate synthesized scene images
-
-To generate scene images from text prompts and update the image mapping JSON, run:
+## Execution Order
 
 ```bash
-python src/MLIP/mlip/data/qwen_image.py
+# 1. Build scene groups from agument.json
+python scene_groups_with_goal_label.py
+
+# 2. Generate images (requires GPU, torch, diffusers)
+python qwen_image.py
+
+# 3. Produce augmented datasets
+python postprocessing_agument.py
 ```
 
-Generated images should be saved under a user-specified directory (e.g., qwen2image_v*/).
-This step can be skipped if the image mapping JSON and images are already available.
+## Outputs
+
+- `agument_with_img_unique.json`
+- `agument_with_img_unique_cal.json`
+- `agument_with_img_unique_val.json`
+- `agument_with_img_unique_subset_180.json`
+- `agument_with_img_unique_subset_180_cal.json`
+- `agument_with_img_unique_subset_180_val.json`
 
 
-### Run postprocessing
-
-Run the following script to reproduce the postprocessing used in the paper:
-```bash
-python src/MLIP/mlip/data/postprocessing_agument.py
-```
-
-This script performs the following operations:
-injects group_id and img_path into entries,
-removes duplicate entries per (group_id, goal),
-creates calibration and validation splits,
-and generates subset JSON files used for evaluation.
-
-
-### Outputs
-
-The following files are generated under src/MLIP/mlip/data/:
-- agument_with_img_unique.json
-- agument_with_img_unique_cal.json
-- agument_with_img_unique_val.json
-- agument_with_img_unique_subset_180.json
-- agument_with_img_unique_subset_180_cal.json
-- agument_with_img_unique_subset_180_val.json
 
 ### Citation
 ```
